@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
+import { FriendsContext } from "../../context/FriendsContext";
 
 const FrindDetails = () => {
   const { id } = useParams();
   const friendsData = useLoaderData();
+  const { handleTextButton, handleCallButton, handleVideoButton } = useContext(FriendsContext);
 
   const exactFriend = friendsData.find((friend) => friend.id === parseInt(id));
-  console.log(exactFriend);
 
   const {
     name,
@@ -166,7 +168,7 @@ const FrindDetails = () => {
             <div className="card-body py-4 px-5">
               <h3 className="font-medium text-brand">Quick Check-In</h3>
               <div className="grid grid-cols-3 gap-3">
-                <button className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal">
+                <button className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal" onClick={()=>handleCallButton(exactFriend)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -183,7 +185,10 @@ const FrindDetails = () => {
                   </svg>
                   Call
                 </button>
-                <button className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal">
+                <button
+                  className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal"
+                  onClick={() => handleTextButton(exactFriend)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -200,7 +205,7 @@ const FrindDetails = () => {
                   </svg>
                   Text
                 </button>
-                <button className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal">
+                <button className="btn btn-outline btn-sm flex-col h-auto py-4 gap-2 font-normal" onClick={() => handleVideoButton(exactFriend)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"

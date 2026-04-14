@@ -6,7 +6,6 @@ import { useLoaderData } from "react-router";
 
 export default function Dashbord() {
   const friendsData = useLoaderData();
-  console.log(friendsData);
   return (
     <>
       <Hero></Hero>

@@ -11,23 +11,6 @@ export default function StatisticCard() {
   console.log(friends);
 
 
-//   {
-//     "id": 1,
-//     "name": "Sarah Mitchell",
-//     "picture": "https://randomuser.me/api/portraits/women/12.jpg",
-//     "email": "sarah.mitchell@gmail.com",
-//     "days_since_contact": 18,
-//     "status": "overdue",
-//     "tags": [
-//         "college",
-//         "close friend",
-//         "travel buddy"
-//     ],
-//     "bio": "Met freshman year of college. We backpacked through Southeast Asia together after graduation. She's now a UX designer in Austin.",
-//     "goal": 14,
-//     "next_due_date": "2026-04-10"
-// }
-
   return (
     <div className="max-w-277.5 mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10">
       {/*  card 1 */}

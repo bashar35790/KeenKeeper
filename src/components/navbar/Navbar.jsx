@@ -1,8 +1,10 @@
-import { BarChart2, Clock, Home } from "lucide-react";
+import { BarChart2, Clock, Home, Menu, X } from "lucide-react";
 import Logo from "../../assets/logo.png";
 import { NavLink } from "react-router";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
     { path: "/", label: "Home", icon: Home },
     { path: "/timeline", label: "Timeline", icon: Clock },
@@ -10,20 +12,27 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="w-full bg-white border-b border-base-200 px-6 py-3 flex items-center justify-between shadow-sm">
+    <nav className={`w-full bg-white border-b border-base-200 md:px-20 max-md:gap-4 px-4 py-4 flex items-center justify-between shadow-sm ${isMenuOpen ? "flex-col items-start" : ""}`}>
       {/* Logo */}
-      <div className="flex items-center">
+      <div className="md:flex md:items-center flex justify-between w-full items-center">
         <NavLink to="/">
           <img src={Logo} alt="Logo" className="w-36 h-8 mr-2 cursor-pointer" />
         </NavLink>
+        <div className="lg:hidden cursor-pointer w-fit h-fit" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {
+            isMenuOpen ? <X /> : <Menu />
+          }
+          
+        </div>
       </div>
 
       {/* Nav Items */}
-      <div className="flex items-center gap-2">
+      <div className={`md:flex h-fit max-md:justify-start items-center gap-2 ${isMenuOpen? "flex flex-col w-full" : "hidden"}`}>
         {navItems.map(({ path, label, icon: Icon }) => (
           <NavLink
             key={path}
             to={path}
+            onClick={()=>setIsMenuOpen(!isMenuOpen)}
             className={({ isActive }) =>
               `btn btn-sm gap-2 rounded-lg transition-all ${
                 isActive

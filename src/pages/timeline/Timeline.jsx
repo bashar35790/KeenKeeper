@@ -1,6 +1,7 @@
-import { MessageCircleMore, PhoneCall, VideoIcon } from "lucide-react";
+import { CalendarX, MessageCircleMore, PhoneCall, VideoIcon } from "lucide-react";
 import { useContext } from "react";
 import { FriendsContext } from "../../context/FriendsContext";
+import { Link } from "react-router";
 
 const Timeline = () => {
   const { textFriend, callFriend, videoFriend } = useContext(FriendsContext);
@@ -30,11 +31,35 @@ const Timeline = () => {
       </div>
 
       {/* Timeline List */}
+      {textFriend.length === 0 &&
+        callFriend.length === 0 &&
+        videoFriend.length === 0 && (
+          <div className="max-w-277.5 w-full mx-auto ">
+            {/* Empty State */}
+            <div className="flex flex-col items-center justify-center text-center p-6 rounded-xl bg-base-100 shadow-sm">
+              {/* Icon */}
+              <div className="p-4 bg-base-200 rounded-full mb-4">
+                <CalendarX className="w-10 h-10 text-gray-400" />
+              </div>
+
+              {/* Text */}
+              <h2 className="text-xl font-semibold mb-2">No activity yet</h2>
+
+              <p className="text-gray-500 max-w-sm">
+                You don’t have any timeline activity right now. Start
+                interacting with your friends to see updates here.
+              </p>
+
+              {/* Optional Button */}
+              <Link to="/" className="btn bg-brand text-white mt-6">Add Activity</Link>
+            </div>
+          </div>
+        )}
       <div className="space-y-4">
         {textFriend.map((item) => (
           <div
             key={item.id}
-            className="flex items-center gap-4 p-4  rounded-xl bg-base-100 shadow-sm"
+            className="flex items-center gap-4 p-4  rounded-xl bg-white shadow-sm"
           >
             {/* Icon */}
             <div className="p-2 bg-base-200 rounded-lg">
@@ -57,7 +82,7 @@ const Timeline = () => {
         {callFriend.map((item) => (
           <div
             key={item.id}
-            className="flex items-center gap-4 p-4  rounded-xl bg-base-100 shadow-sm"
+            className="flex items-center gap-4 p-4  rounded-xl bg-white shadow-sm"
           >
             {/* Icon */}
             <div className="p-2 bg-base-200 rounded-lg">{<PhoneCall />}</div>
@@ -65,7 +90,7 @@ const Timeline = () => {
             {/* Content */}
             <div>
               <p className="font-semibold text-heading">
-                Text
+                Meetup
                 <span className="text-gray-500 font-normal">
                   {" "}
                   with {item.name}
@@ -78,7 +103,7 @@ const Timeline = () => {
         {videoFriend.map((item) => (
           <div
             key={item.id}
-            className="flex items-center gap-4 p-4  rounded-xl bg-base-100 shadow-sm"
+            className="flex items-center gap-4 p-4  rounded-xl bg-white shadow-sm"
           >
             {/* Icon */}
             <div className="p-2 bg-base-200 rounded-lg">{<VideoIcon />}</div>
@@ -86,7 +111,7 @@ const Timeline = () => {
             {/* Content */}
             <div>
               <p className="font-semibold text-heading">
-                Text
+                Video
                 <span className="text-gray-500 font-normal">
                   {" "}
                   with {item.name}

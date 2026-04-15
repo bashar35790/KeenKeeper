@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-brand text-white pt-16 pb-6">
       <div className="max-w-6xl mx-auto px-4 text-center">
         {/* Title */}
-        <h2 className="text-5xl font-bold mb-4">KeenKeeper</h2>
+        <h2 className="md:text-5xl text-3xl  font-bold mb-4">KeenKeeper</h2>
 
         {/* Subtitle */}
         <p className="text-gray-200 max-w-2xl mx-auto">

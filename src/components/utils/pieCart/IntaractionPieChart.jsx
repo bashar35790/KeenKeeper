@@ -127,7 +127,7 @@ const InteractionPieChart = () => {
       <div className=" p-5 md:p-6 w-full">
         {/* Pie Chart Container */}
         {totalInteractions === 0 && (
-          <div className="flex flex-col items-center justify-center h-80 text-center">
+          <div className="flex flex-col items-center justify-center h-fit text-center">
             <p className="text-lg text-gray-500 mb-4">No interactions yet.</p>
             <p>Start connecting with your friends!</p>
           </div>

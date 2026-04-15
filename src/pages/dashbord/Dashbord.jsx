@@ -1,17 +1,12 @@
-import React, { Suspense } from "react";
 import Hero from "../../components/sections/hero/Hero";
 import StatisticCard from "../../components/utils/statisticCard/StatisticCard";
 import FriendCard from "../../components/utils/friendCard/FriendCard";
-import { useLoaderData, useNavigation } from "react-router";
+import { useLoaderData } from "react-router";
 
 export default function Dashbord() {
   const friendsData = useLoaderData();
-  const navigation = useNavigation();
   return (
     <>
-      {navigation.state === "loading" && (
-        <span className="loading loading-bars loading-md"></span>
-      )}
       <Hero></Hero>
       <section>
         <StatisticCard />

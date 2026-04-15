@@ -11,15 +11,15 @@ import {
 } from "recharts";
 
 const InteractionPieChart = () => {
-  const { textFriend, callFriend, videoFriend } = useContext(FriendsContext);
+  const { timeline } = useContext(FriendsContext);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  console.log("Context Data:", { textFriend, callFriend, videoFriend });
+  console.log("Context Data:", timeline);
   // Data structure for 3 interaction types: Text, Call, Video
   const interactionData = [
-    { name: "Text", value: textFriend.length, color: "#7E35E1", icon: "💬" },
-    { name: "Call", value: callFriend.length, color: "#244D3F", icon: "📞" },
-    { name: "Video", value: videoFriend.length, color: "#37A163", icon: "📹" },
+    { name: "Text", value: timeline.filter((item) => item.type === "text").length, color: "#7E35E1", icon: "💬" },
+    { name: "Call", value: timeline.filter((item) => item.type === "call").length, color: "#244D3F", icon: "📞" },
+    { name: "Video", value: timeline.filter((item) => item.type === "video").length, color: "#37A163", icon: "📹" },
   ];
 
   const totalInteractions = interactionData.reduce(
